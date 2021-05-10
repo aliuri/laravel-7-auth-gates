@@ -18,5 +18,9 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
+Route::middleware('can:isAdmin')->group(function () {
 
+    Route::resource('users','UsersControllers');
+    
+});
 Route::get('/home', 'HomeController@index')->name('home');
